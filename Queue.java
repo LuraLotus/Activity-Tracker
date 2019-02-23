@@ -15,7 +15,7 @@ public class Queue
   {
 
   }
-  //Deletes an activity
+  //Deletes an activity (displays all added activities for the user to choose from)
   public void Delete()
   {
 
@@ -23,6 +23,6 @@ public class Queue
   //Goes to next activity
   public void Next()
   {
-    
+
   }
 }
