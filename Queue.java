@@ -3,6 +3,7 @@ public class Queue
   public Node head;
   public Node tail;
   public int size;
+  public Node current;
 
   public Queue()
   {
@@ -23,6 +24,20 @@ public class Queue
   //Goes to next activity
   public void Next()
   {
-
+    current.data = null;
+    current = current.link;
+  }
+  public void Display()
+  {
+    Node discurrent;
+    for(int i = 0; discurrent.data != null; i++)
+    {
+      System.out.println(i + " - " + discurrent.data);
+      discurrent = discurrent.link;
+    }
+  }
+  public void Reorder()
+  {
+    
   }
 }
