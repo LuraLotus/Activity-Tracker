@@ -38,6 +38,7 @@ public class Queue
   }
   public void Reorder()
   {
-    
+    int[] array = array (size);
+	    System.out.println( "input" );
   }
 }
