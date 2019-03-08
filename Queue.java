@@ -14,7 +14,21 @@ public class Queue
   //Adds an activity
   public void Add(String input)
   {
-
+	Node current = new Node(data)
+	current.next = null;
+		if(this.head == null){
+			this.head = current;
+		}
+		else
+		{
+			Node tail = this.head;
+			while(tail.link != null){
+				tail = tail.link;
+			}
+			tail.next = current;
+		}
+		this.size++;
+  }
   }
   //Deletes an activity (displays all added activities for the user to choose from)
   public void Delete()
