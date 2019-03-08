@@ -25,4 +25,11 @@ public class Queue
   {
     
   }
+  public void reorder(){
+     int[] array = array (size);
+	    System.out.println( "input" );
+		for (int i = 0; i < list.size(); i++) {
+				
+	}
+ }
 }
