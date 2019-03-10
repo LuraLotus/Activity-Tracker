@@ -13,7 +13,6 @@ class MainClass
     Queue q = new Queue();
     Scanner in = new Scanner(new File("activities.txt"));
     PrintWriter out = null;
-    out = new PrintWriter("activities.txt");
     while(in.hasNextLine())
     {
       q.Add(in.nextLine());
@@ -45,6 +44,7 @@ class MainClass
       switch(c)
       {
         case 0: bool = false;
+                out = new PrintWriter("activities.txt");
                 while(q.head != null)
                 {
                   out.println(q.head.data);
