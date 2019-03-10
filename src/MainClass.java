@@ -28,6 +28,7 @@ class MainClass
     boolean bool = true;
     while(bool == true)
     {
+      System.out.println();
       System.out.println("----------------------------------------------------------------------");
       System.out.print("Current Activity: ");
       if(q.head == null)
