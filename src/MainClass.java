@@ -23,6 +23,7 @@ class MainClass
     boolean bool = true;
     while(bool == true)
     {
+      System.out.println("----------------------------------------------------------------------");
       System.out.print("Current Activity: ");
       if(q.head == null)
       {
@@ -32,6 +33,7 @@ class MainClass
       {
         System.out.println(q.head.data);
       }
+      System.out.println("----------------------------------------------------------------------");
       System.out.println("What would you like to do?");
       System.out.println("0 - Exit");
       System.out.println("1 - Next Activity");
@@ -39,6 +41,7 @@ class MainClass
       System.out.println("3 - Delete Activity");
       System.out.println("4 - Reorder Activity");
       System.out.println("5 - Display all activities");
+      System.out.println("----------------------------------------------------------------------");
       System.out.print("Input: ");
       c = input.nextInt();
       switch(c)
@@ -60,10 +63,13 @@ class MainClass
                 break;
         case 3: q.Delete();
                 break;
-        case 4: System.out.println("List of Activities: ");
+        case 4: System.out.println("----------------------------------------------------------------------");
+                System.out.println("List of Activities: ");
                 q.Reorder();
                 break;
-        case 5: q.Display();
+        case 5: System.out.println("----------------------------------------------------------------------");
+                System.out.println("List of Activities: ");
+                q.Display();
                 break;
       }
     }
