@@ -13,11 +13,11 @@ class MainClass
     Queue q = new Queue();
     Scanner in = new Scanner(new File("activities.txt"));
     PrintWriter out = null;
+    out = new PrintWriter("activities.txt");
     while(in.hasNextLine())
     {
       q.Add(in.nextLine());
     }
-
     Scanner input = new Scanner(System.in);
     Scanner add = new Scanner(System.in);
     int c = 0;
@@ -45,6 +45,12 @@ class MainClass
       switch(c)
       {
         case 0: bool = false;
+                while(q.head != null)
+                {
+                  out.println(q.head);
+                  q.head = q.head.link;
+                }
+                out.close();
                 break;
         case 1: q.Next();
                 break;
