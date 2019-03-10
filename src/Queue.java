@@ -37,6 +37,7 @@ public class Queue
   	System.out.println("Select an activity to delete from the list (input the index): ");
     Display();
     System.out.print("Input: ");
+    String string = null;
     int pos = input.nextInt();
     Node temp = head;
     if(pos == 0)
@@ -57,6 +58,7 @@ public class Queue
       }
       Node del = temp.link.link;
       temp.link = del;
+      string = del.data;
       this.size--;
     }
   }
