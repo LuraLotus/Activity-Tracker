@@ -34,34 +34,42 @@ public class Queue
   public void Delete()
   {
     Scanner input = new Scanner(System.in);
-    System.out.println("-----------------------------------");
-  	System.out.println("Select an activity to delete from the list (input the index): ");
-    Display();
-    System.out.println("-----------------------------------");
-    System.out.print("Input: ");
-    String string = null;
-    int pos = input.nextInt();
-    Node temp = head;
-    if(pos == 0)
+    if(head != null)
     {
-      head = temp.link;
-      this.size--;
-    }
-    else if(pos >= size)
-    {
-      System.out.println("Invalid input.");
-      return;
+      System.out.println("----------------------------------------------------------------------");
+    	System.out.println("Select an activity to delete from the list (input the index): ");
+      Display();
+      System.out.println("----------------------------------------------------------------------");
+      System.out.print("Input: ");
+      String string = null;
+      int pos = input.nextInt();
+      Node temp = head;
+      if(pos == 0)
+      {
+        head = temp.link;
+        this.size--;
+      }
+      else if(pos >= size)
+      {
+        System.out.println("Invalid input.");
+        return;
+      }
+      else
+      {
+        for(int i = 0; temp != null && i < pos - 1; i++)
+        {
+          temp = temp.link;
+        }
+        Node del = temp.link.link;
+        temp.link = del;
+        string = del.data;
+        this.size--;
+      }
     }
     else
     {
-      for(int i = 0; temp != null && i < pos - 1; i++)
-      {
-        temp = temp.link;
-      }
-      Node del = temp.link.link;
-      temp.link = del;
-      string = del.data;
-      this.size--;
+      System.out.println("----------------------------------------------------------------------");
+      System.out.println("There are no activities.");
     }
   }
   //Goes to next activity
@@ -69,6 +77,7 @@ public class Queue
   {
     if(head == null)
     {
+      System.out.println("----------------------------------------------------------------------");
       System.out.println("There are no more activites.");
     }
     else
@@ -97,38 +106,45 @@ public class Queue
   public void Reorder()
   {
     Scanner input = new Scanner(System.in);
-    System.out.println("----------------------------------------------------------------------");
-    Display();
-    String[] temp = new String[size];
-    for(int i = 0; i < size; i++)
+    if(head != null)
     {
-      temp[i] = head.data;
-      head = head.link;
-    }
-    System.out.print("Which activity would you like to move? ");
-    int choice = input.nextInt();
-    String choicedata = temp[choice];
-    System.out.print("Where would you like to move it? ");
-    int newloc = input.nextInt();
-    if(choice > newloc)
-    {
-      for(int i = choice; i > newloc; i--)
+      Display();
+      String[] temp = new String[size];
+      for(int i = 0; i < size; i++)
       {
-        temp[i] = temp[i - 1];
+        temp[i] = head.data;
+        head = head.link;
       }
-      temp[newloc] = choicedata;
+      System.out.println("----------------------------------------------------------------------");
+      System.out.print("Which activity would you like to move? ");
+      int choice = input.nextInt();
+      String choicedata = temp[choice];
+      System.out.print("Where would you like to move it? ");
+      int newloc = input.nextInt();
+      if(choice > newloc)
+      {
+        for(int i = choice; i > newloc; i--)
+        {
+          temp[i] = temp[i - 1];
+        }
+        temp[newloc] = choicedata;
+      }
+      else
+      {
+        for(int i = choice; i < newloc; i++)
+        {
+          temp[i] = temp[i + 1];
+        }
+        temp[newloc] = choicedata;
+      }
+      for(int i = 0; i < temp.length; i++)
+      {
+        Add(temp[i]);
+      }
     }
     else
     {
-      for(int i = choice; i < newloc; i++)
-      {
-        temp[i] = temp[i + 1];
-      }
-      temp[newloc] = choicedata;
-    }
-    for(int i = 0; i < temp.length; i++)
-    {
-      Add(temp[i]);
+      System.out.println("There are no activities.");
     }
   }
 }
