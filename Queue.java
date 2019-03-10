@@ -1,9 +1,10 @@
+import java.util.Scanner;
+
 public class Queue
 {
   public Node head;
   public Node tail;
   public int size;
-  public Node current;
 
   public Queue()
   {
@@ -15,18 +16,18 @@ public class Queue
   public void Add(String input)
   {
   	Node newNode = new Node();
-  	newNode.link = null;
-  	if(this.head == null){
-  		this.head = current;
-  	}
-  	else
-  	{
-  		Node tail = this.head;
-  		while(tail.link != null){
-  			tail = tail.link;
-  		}
-  		tail.link = current;
-  	}
+    newNode.data = input;
+  	if(head == null)
+    {
+      head = newNode;
+      tail = newNode;
+    }
+    else
+    {
+      newNode.link = null;
+      tail.link = newNode;
+      tail = newNode;
+    }
   	this.size++;
   }
   //Deletes an activity (displays all added activities for the user to choose from)
@@ -35,64 +36,83 @@ public class Queue
     Scanner input = new Scanner(System.in);
   	System.out.println("Select an activity to delete from the list (input the index): ");
     Display();
-    Node dcurrent;
-    dcurrent = head;
-    int[] temp = new int[size];
-    for(int i = 0; i < size; i++)
+    System.out.print("Input: ");
+    int pos = input.nextInt();
+    Node temp = head;
+    if(pos == 0)
     {
-      temp[i] = dcurrent.data;
-      dcurrent.data = null;
-      dcurrent = dcurrent.link;
+      head = temp.link;
+      this.size--;
     }
-    int x = input.nextInt();
-    if(x == temp.length - 1)
+    else if(pos >= size)
     {
-      temp[x] = null;
+      System.out.println("Invalid input.");
+      return;
     }
     else
     {
-      for(int i = x; i < temp.length - 1; i++)
+      for(int i = 0; temp != null && i < pos - 1; i++)
       {
-        temp[i] = temp[i + 1];
+        temp = temp.link;
       }
+      Node del = temp.link.link;
+      temp.link = del;
+      this.size--;
     }
-    for(int i = 0; i < temp.length; i++)
-    {
-      this.Add(temp[i]);
-    }
-    this.size--;
-    // String del = in.readLine();
-  	// File SourceFile = new File(input);
-    // Scanner input = new Scanner(SourceFile);
-    // PrintWriter output = new PrintWriter(SourceFile);
-    // while (input.hasNext())
-  	// {
-    //   String x = input.nextLine();
-    //   String y = x.replaceAll(del, "");
-    //   output.println(y);
-    // }
-    // input.close();
-    // output.close();
-    // System.out.println("Output: o" + input);
   }
   //Goes to next activity
   public void Next()
   {
-    current.data = null;
-    current = current.link;
+    if(head == null)
+    {
+      System.out.println("There are no more activites.");
+    }
+    else
+    {
+      head = head.link;
+      this.size--;
+    }
   }
   public void Display()
   {
     Node discurrent;
-    for(int i = 0; discurrent.data != null; i++)
+    discurrent = this.head;
+    if(head != null)
     {
-      System.out.println(i + " - " + discurrent.data);
-      discurrent = discurrent.link;
+      for(int i = 0; discurrent != null; i++)
+      {
+        System.out.println(i + " - " + discurrent.data);
+        discurrent = discurrent.link;
+      }
+    }
+    else
+    {
+      System.out.println("There are no activities to display.");
     }
   }
   public void Reorder()
   {
-    int[] array = array (size);
-	    System.out.println( "input" );
+    Scanner input = new Scanner(System.in);
+    Display();
+    String[] temp = new String[size];
+    for(int i = 0; i < size; i++)
+    {
+      temp[i] = head.data;
+      head = head.link;
+    }
+    System.out.print("Which activity would you like to move? ");
+    int choice = input.nextInt();
+    String choicedata = temp[choice];
+    System.out.print("Where would you like to move it? ");
+    int newloc = input.nextInt();
+    for(int i = choice; i > newloc; i--)
+    {
+      temp[i] = temp[i - 1];
+    }
+    temp[newloc] = choicedata;
+    for(int i = 0; i < temp.length; i++)
+    {
+      Add(temp[i]);
+    }
   }
 }
