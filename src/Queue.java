@@ -34,8 +34,10 @@ public class Queue
   public void Delete()
   {
     Scanner input = new Scanner(System.in);
+    System.out.println("-----------------------------------");
   	System.out.println("Select an activity to delete from the list (input the index): ");
     Display();
+    System.out.println("-----------------------------------");
     System.out.print("Input: ");
     String string = null;
     int pos = input.nextInt();
@@ -95,6 +97,7 @@ public class Queue
   public void Reorder()
   {
     Scanner input = new Scanner(System.in);
+    System.out.println("----------------------------------------------------------------------");
     Display();
     String[] temp = new String[size];
     for(int i = 0; i < size; i++)
@@ -107,11 +110,22 @@ public class Queue
     String choicedata = temp[choice];
     System.out.print("Where would you like to move it? ");
     int newloc = input.nextInt();
-    for(int i = choice; i > newloc; i--)
+    if(choice > newloc)
     {
-      temp[i] = temp[i - 1];
+      for(int i = choice; i > newloc; i--)
+      {
+        temp[i] = temp[i - 1];
+      }
+      temp[newloc] = choicedata;
     }
-    temp[newloc] = choicedata;
+    else
+    {
+      for(int i = choice; i < newloc; i++)
+      {
+        temp[i] = temp[i + 1];
+      }
+      temp[newloc] = choicedata;
+    }
     for(int i = 0; i < temp.length; i++)
     {
       Add(temp[i]);
