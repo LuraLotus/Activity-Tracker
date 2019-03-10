@@ -47,7 +47,7 @@ class MainClass
         case 0: bool = false;
                 while(q.head != null)
                 {
-                  out.println(q.head);
+                  out.println(q.head.data);
                   q.head = q.head.link;
                 }
                 out.close();
