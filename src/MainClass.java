@@ -3,6 +3,11 @@
  * Section: A
 **/
 
+/**
+ * Title:       Tractivity (Activity Tracker)
+ * Description: Keeps track of a users' activities.
+**/
+
 import java.util.Scanner;
 import java.io.*;
 
