@@ -5,7 +5,7 @@
 
 /**
  * Title:       Tractivity (Activity Tracker)
- * Description: Keeps track of a users' activities.
+ * Description: Keeps track of a user's activities.
 **/
 
 import java.util.Scanner;
