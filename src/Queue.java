@@ -42,7 +42,6 @@ public class Queue
       Display();
       System.out.println("----------------------------------------------------------------------");
       System.out.print("Input: ");
-      String string = null;
       int pos = input.nextInt();
       Node temp = head;
       if(pos == 0)
@@ -56,6 +55,10 @@ public class Queue
         System.out.println("Invalid input.");
         return;
       }
+      else if(pos == size)
+      {
+
+      }
       else
       {
         for(int i = 0; temp != null && i < pos - 1; i++)
@@ -64,7 +67,6 @@ public class Queue
         }
         Node del = temp.link.link;
         temp.link = del;
-        string = del.data;
         this.size--;
         System.out.println("Activity has been deleted.");
       }
