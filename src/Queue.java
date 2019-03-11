@@ -29,6 +29,7 @@ public class Queue
       tail = newNode;
     }
   	this.size++;
+    System.out.println("Activity has been added.");
   }
   //Deletes an activity (displays all added activities for the user to choose from)
   public void Delete()
@@ -48,6 +49,7 @@ public class Queue
       {
         head = temp.link;
         this.size--;
+        System.out.println("Activity has been deleted.");
       }
       else if(pos >= size)
       {
@@ -64,6 +66,7 @@ public class Queue
         temp.link = del;
         string = del.data;
         this.size--;
+        System.out.println("Activity has been deleted.");
       }
     }
     else
@@ -141,6 +144,7 @@ public class Queue
       {
         Add(temp[i]);
       }
+      System.out.println("Activities reordered.");
     }
     else
     {
