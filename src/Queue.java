@@ -55,10 +55,6 @@ public class Queue
         System.out.println("Invalid input.");
         return;
       }
-      else if(pos == size)
-      {
-
-      }
       else
       {
         for(int i = 0; temp != null && i < pos - 1; i++)
