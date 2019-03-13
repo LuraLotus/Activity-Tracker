@@ -120,6 +120,7 @@ public class Queue
         temp[i] = head.data;
         head = head.link;
       }
+      head = null;
       System.out.println("----------------------------------------------------------------------");
       System.out.print("Which activity would you like to move? ");
       int choice = input.nextInt();
