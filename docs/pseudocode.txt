@@ -1,0 +1,42 @@
+This program keeps track of a user's activities.
+
+class Queue
+{
+  function Add()
+  {
+    Adds a node to the Queue
+  }
+  function Delete()
+  {
+    Deletes a specific node from the Queue
+  }
+  function Next()
+  {
+    Displays the next activity by deleting the head of the Queue and setting the
+    next node as the head
+  }
+  function Display()
+  {
+    Displays all items in the Queue
+  }
+  function Reorder()
+  {
+    Moves the data from the Queue into an array and lets the user input two integers:
+    the index of the item to be moved and the index of the resulting position of the item.
+    The data from the array is the moved back into a Queue.
+  }
+}
+class MainClass
+{
+  function main()
+  {
+    Initializes a Queue and a Scanner object pointing to the text file "activities.txt"
+    Reads the text file line by line and adds each line into a node in the Queue
+    while bool is true
+    {
+      Displays the head of the Queue or "None" if it doesn't exist
+      Displays all possible choices for the user
+      Performs operations and returns feedback depending on user's choice
+    }
+  }
+}
