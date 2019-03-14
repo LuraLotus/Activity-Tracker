@@ -33,6 +33,7 @@ public class Queue
     }
   	this.size++;
     System.out.println("Activity has been added.");
+  }
   /**
    * Deletes an activity (displays all added activities for the user to choose from).
    */
