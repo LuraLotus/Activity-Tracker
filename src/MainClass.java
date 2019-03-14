@@ -18,6 +18,9 @@ class MainClass
     Queue q = new Queue();
     Scanner in = new Scanner(new File("activities.txt"));
     PrintWriter out = null;
+    /**
+     * Reads the File line by line.
+     */
     while(in.hasNextLine())
     {
       q.Add(in.nextLine());
@@ -31,6 +34,9 @@ class MainClass
       System.out.println();
       System.out.println("----------------------------------------------------------------------");
       System.out.print("Current Activity: ");
+      /**
+       * Displays the current activity(head of queue)
+       */
       if(q.head == null)
       {
         System.out.println("None");
@@ -54,6 +60,9 @@ class MainClass
       {
         case 0: bool = false;
                 out = new PrintWriter("activities.txt");
+                /**
+                 * Writes all remaining activities to the file.
+                 */
                 while(q.head != null)
                 {
                   out.println(q.head.data);
