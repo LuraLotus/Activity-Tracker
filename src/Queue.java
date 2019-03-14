@@ -12,7 +12,10 @@ public class Queue
     this.tail = null;
     this.size = 0;
   }
-  //Adds an activity
+  /**
+   * Adds an activity
+   * @param input The new activity
+   */
   public void Add(String input)
   {
   	Node newNode = new Node();
@@ -30,8 +33,9 @@ public class Queue
     }
   	this.size++;
     System.out.println("Activity has been added.");
-  }
-  //Deletes an activity (displays all added activities for the user to choose from)
+  /**
+   * Deletes an activity (displays all added activities for the user to choose from)
+   */
   public void Delete()
   {
     Scanner input = new Scanner(System.in);
@@ -73,7 +77,9 @@ public class Queue
       System.out.println("There are no activities.");
     }
   }
-  //Goes to next activity
+  /**
+   * Goes to next activity
+   */
   public void Next()
   {
     if(head == null)
@@ -104,6 +110,9 @@ public class Queue
       System.out.println("There are no activities to display.");
     }
   }
+  /**
+   * Moves one activity into another position based on user input
+   */
   public void Reorder()
   {
     Scanner input = new Scanner(System.in);
@@ -111,6 +120,9 @@ public class Queue
     {
       Display();
       String[] temp = new String[size];
+      /**
+       * Moves the queue into an array
+       */
       for(int i = 0; i < size; i++)
       {
         temp[i] = head.data;
@@ -139,6 +151,9 @@ public class Queue
         }
         temp[newloc] = choicedata;
       }
+      /**
+       * Moves the data of the array back into a queue
+       */
       for(int i = 0; i < temp.length; i++)
       {
         Add(temp[i]);
