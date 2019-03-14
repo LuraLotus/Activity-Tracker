@@ -35,7 +35,7 @@ class MainClass
       System.out.println("----------------------------------------------------------------------");
       System.out.print("Current Activity: ");
       /**
-       * Displays the current activity(head of queue)
+       * Displays the current activity(head of queue).
        */
       if(q.head == null)
       {
