@@ -11,7 +11,7 @@
 import java.util.Scanner;
 import java.io.*;
 
-class MainClass
+public class MainClass
 {
   public static void main(String[] args) throws IOException
   {
