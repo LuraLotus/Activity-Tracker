@@ -54,6 +54,17 @@ public class Queue
         this.size--;
         System.out.println("Activity has been deleted.");
       }
+      else if(pos == size - 1)
+      {
+        for(int i = 0; temp != null && i < pos - 1; i++)
+        {
+          temp = temp.link;
+        }
+        tail = temp;
+        temp.link = null;
+        this.size--;
+        System.out.println("Activity has been deleted.");
+      }
       else if(pos >= size)
       {
         System.out.println("Invalid input.");
