@@ -32,7 +32,6 @@ public class Queue
       tail = newNode;
     }
   	this.size++;
-    System.out.println("Activity has been added.");
   }
   /**
    * Deletes an activity (displays all added activities for the user to choose from).
@@ -120,44 +119,91 @@ public class Queue
     if(head != null)
     {
       Display();
-      String[] temp = new String[size];
-      /**
-       * Moves the queue into an array.
-       */
-      for(int i = 0; i < size; i++)
-      {
-        temp[i] = head.data;
-        head = head.link;
-      }
-      head = null;
       System.out.println("----------------------------------------------------------------------");
       System.out.print("Which activity would you like to move? ");
       int choice = input.nextInt();
-      String choicedata = temp[choice];
       System.out.print("Where would you like to move it? ");
       int newloc = input.nextInt();
-      if(choice > newloc)
+      if(choice == newloc || choice >= size || newloc >= size)
       {
-        for(int i = choice; i > newloc; i--)
+        System.out.println("Invalid input.");
+        return;
+      }
+      Node cNode = null;
+      Node prevcNode = head;
+      Node ncNode = null;
+      Node prevncNode = head;
+      if(newloc == 0)
+      {
+        ncNode = head;
+        for(int i = 0; prevcNode != null && i < choice - 1; i++)
         {
-          temp[i] = temp[i - 1];
+          prevcNode = prevcNode.link;
         }
-        temp[newloc] = choicedata;
+        cNode = prevcNode.link;
+        if(choice == size - 1)
+        {
+          prevcNode.link = null;
+          cNode.link = ncNode;
+        }
+        else
+        {
+          prevcNode.link = cNode.link;
+          cNode.link = ncNode;
+        }
+        head = cNode;
+      }
+      else if(choice == 0)
+      {
+        cNode = head;
+        for(int i = 0; prevncNode != null && i < newloc - 1; i++)
+        {
+          prevncNode = prevncNode.link;
+        }
+        ncNode = prevncNode.link;
+        if(newloc == size - 1)
+        {
+          head = cNode.link;
+          cNode.link = null;
+          ncNode.link = cNode;
+        }
+        else
+        {
+          head = cNode.link;
+          cNode.link = ncNode.link;
+          ncNode.link = cNode;
+        }
       }
       else
       {
-        for(int i = choice; i < newloc; i++)
+        for(int i = 0; prevcNode != null && i < choice - 1; i++)
         {
-          temp[i] = temp[i + 1];
+          prevcNode = prevcNode.link;
         }
-        temp[newloc] = choicedata;
-      }
-      /**
-       * Moves the data of the array back into a queue.
-       */
-      for(int i = 0; i < temp.length; i++)
-      {
-        Add(temp[i]);
+        cNode = prevcNode.link;
+        for(int i = 0; prevncNode != null && i < newloc - 1; i++)
+        {
+          prevncNode = prevncNode.link;
+        }
+        ncNode = prevncNode.link;
+        if(choice == newloc + 1)
+        {
+          prevncNode.link = cNode;
+          ncNode.link = cNode.link;
+          cNode.link = ncNode;
+        }
+        else if(newloc == choice + 1)
+        {
+          prevcNode.link = ncNode;
+          cNode.link = ncNode.link;
+          ncNode.link = cNode;
+        }
+        else
+        {
+          prevcNode.link = cNode.link;
+          prevncNode.link = cNode;
+          cNode.link = ncNode;
+        }
       }
       System.out.println("Activities reordered.");
     }
@@ -165,5 +211,11 @@ public class Queue
     {
       System.out.println("There are no activities.");
     }
+  }
+  public void Enter()
+  {
+    Scanner enter = new Scanner(System.in);
+    System.out.println("Press enter to continue...");
+    enter.nextLine();
   }
 }

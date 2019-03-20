@@ -75,16 +75,21 @@ public class MainClass
         case 2: System.out.println("Enter activity to add: ");
                 String addin = add.nextLine();
                 q.Add(addin);
+                System.out.println("Activity has been added.");
+                q.Enter();
                 break;
         case 3: q.Delete();
+                q.Enter();
                 break;
         case 4: System.out.println("----------------------------------------------------------------------");
                 System.out.println("List of Activities: ");
                 q.Reorder();
+                q.Enter();
                 break;
         case 5: System.out.println("----------------------------------------------------------------------");
                 System.out.println("List of Activities: ");
                 q.Display();
+                q.Enter();
                 break;
       }
     }
