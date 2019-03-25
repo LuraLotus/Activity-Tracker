@@ -209,6 +209,12 @@ public class Queue
           cNode.link = ncNode.link;
           ncNode.link = cNode;
         }
+        else if(newloc == size - 1)
+        {
+          prevcNode.link = cNode.link;
+          ncNode.link = cNode;
+          cNode.link = null;
+        }
         else
         {
           prevcNode.link = cNode.link;
